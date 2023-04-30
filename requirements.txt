@@ -1,6 +1,17 @@
+filelock==3.12.0
+Jinja2==3.1.2
+MarkupSafe==2.1.2
+matlab==0.1
+mpmath==1.3.0
+networkx==3.1
 numpy==1.24.3
+ow==0.0.4
 pandas==2.0.0
 python-dateutil==2.8.2
 pytz==2023.3
+scipy==1.10.1
 six==1.16.0
+sympy==1.11.1
+torch==2.0.0
+typing_extensions==4.5.0
 tzdata==2023.3
