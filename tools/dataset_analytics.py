@@ -1,23 +1,24 @@
 import numpy as np
-import scipy
 import pandas as pd
 
-data = scipy.io.loadmat('../data/RAP_annotation.mat')
-bags_cols = data['RAP_annotation'][0][0][2][88:95]
 
-df_cols = np.zeros(bags_cols.size, dtype=str)
+class MakeTable:
+    def __init__(self, data, data_size):
+        self.bags_cols = data['RAP_annotation'][0][0][2][88:95]
 
-for col in range(bags_cols.size):
-    df_cols[col] = bags_cols[col][0][0][11:]
+        self.df_cols = np.zeros(self.bags_cols.size + 1, dtype=object)
+        self.df_cols[0] = 'name'
+        for col in range(1, self.bags_cols.size + 1):
+            self.df_cols[col] = self.bags_cols[col - 1][0][0][11:]
 
-data_size = 100
-data_array = np.zeros((data_size, 7), dtype=int)
+        self.data_array = np.zeros((data_size, 8), dtype=object)
 
-for row in range(data_size):
-    data_array[row] = data['RAP_annotation'][0][0][1][row][88:95]
+        for row in range(data_size):
+            new_row = data['RAP_annotation'][0][0][0][row][0][0]
+            self.data_array[row][0] = new_row
+            self.data_array[row][1:] = data['RAP_annotation'][0][0][1][row][88:95]
 
-# print(data_array)
+        self.df = pd.DataFrame(self.data_array, columns=self.df_cols)
 
-df = pd.DataFrame(data_array, columns=df_cols)
-
-print(df)
+    def display(self):
+        return self.df
