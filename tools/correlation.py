@@ -25,4 +25,3 @@ class Correlation:
 
     def display(self):
         return self.correlation
-
