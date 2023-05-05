@@ -1,26 +1,18 @@
-from skimage import io
-import cv2
+from PIL import Image
 import numpy as np
 import os
 
-filelist = "../RAP_dataset"
+path = os.listdir("../dataset")
+img_list = np.zeros((len(path)), dtype=object)
+print(img_list.size)
+
+img_iter = 0
+
+for element in path:
+    img_list[img_iter] = np.asarray(Image.open('../dataset/' + element).convert('RGB'))
+    img_iter += 1
 
 
-def image2array():
-    image_array = []
-    for image in os.listdir(filelist):
-        img = io.imread(image)
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        img = cv2.resize(img, (224, 224))
-        image_array.append(img)
-    image_array = np.array(image_array)
-    image_array = image_array.reshape(image_array.shape[0], 224, 224, 3)
-    image_array = image_array.astype('float32')
-    image_array /= 255
-    return np.array(image_array)
+# img = np.asarray(Image.open('../RAP_dataset/CAM01-2013-12-23-20131223120147-20131223120735-tarid3-frame493-line1.png').convert('RGB'))
 
-
-train_data = image2array()
-print("Length of training dataset:", train_data.shape)
-
-# print(os.listdir(filelist))
+print(img_list)
