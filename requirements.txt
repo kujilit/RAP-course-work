@@ -16,4 +16,3 @@ sympy==1.11.1
 torch==2.0.0
 typing_extensions==4.5.0
 tzdata==2023.3
-Pillow~=9.5.0
