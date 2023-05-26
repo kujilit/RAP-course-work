@@ -1,8 +1,6 @@
 import traceback
 
 import torch
-import torch.nn as nn
-import torchvision
 import torchvision.transforms as transforms
 from PIL import Image
 import numpy as np
@@ -24,7 +22,7 @@ conv = torch.nn.Conv2d(in_channels=3, out_channels=3, kernel_size=3)
 with torch.no_grad():
     conv.weight.data.copy_(kernel)
 
-for element in path[:1]:
+for element in path:
     image = Image.open('../dataset/' + element).resize((255, 255))
     img_list[img_iter] = image
     img_list[img_iter] = padding(transform(img_list[img_iter]))
@@ -36,7 +34,7 @@ for element in path[:1]:
 
     img_iter += 1
 
-print(img_list[0].shape)
+print(img_list.shape)
 img_list[0].unsqueeze(0)
 output_img = transforms.ToPILImage()(img_list[0][0])
 output_img.save("test.jpg")
