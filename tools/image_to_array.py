@@ -1,22 +1,17 @@
 import traceback
-
+from dataset_analytics import MakeTable
 import scipy
 import torch
 import torchvision.transforms as transforms
 from PIL import Image
 import numpy as np
 import os
-<<<<<<< HEAD
+import pandas as pd
 import sys
 
 
 # torch.set_printoptions(threshold=sys.maxsize)
 # np.set_printoptions(threshold=sys.maxsize)
-=======
-import pandas as pd
-
-from dataset_analytics import MakeTable
->>>>>>> origin/main
 
 
 class CNN:
