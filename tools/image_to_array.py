@@ -8,6 +8,7 @@ import numpy as np
 import os
 import pandas as pd
 import sys
+from dataset_analytics import MakeTable
 
 
 # torch.set_printoptions(threshold=sys.maxsize)
