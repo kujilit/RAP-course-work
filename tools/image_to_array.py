@@ -6,17 +6,14 @@ import torchvision.transforms as transforms
 from PIL import Image
 import numpy as np
 import os
-<<<<<<< HEAD
 import sys
 
 
 # torch.set_printoptions(threshold=sys.maxsize)
 # np.set_printoptions(threshold=sys.maxsize)
-=======
 import pandas as pd
 
 from dataset_analytics import MakeTable
->>>>>>> origin/main
 
 
 class CNN:
